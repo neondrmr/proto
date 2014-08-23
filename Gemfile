@@ -44,15 +44,12 @@ gem 'rails_12factor', group: :production
 
 gem 'devise'
 
-group :development, :test do
-  gem 'annotate'
-  gem 'rspec-rails'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-end
+gem 'annotate'
+gem 'rspec-rails'
+gem 'better_errors'
+gem 'binding_of_caller'
 
 gem 'foundation-rails'
-gem 'annotate'
 
 
 

@@ -37,4 +37,9 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  # [CAUTION!] This allows all remote systems to view better_errors as if they were local
+  #    Added to allow development/preview on Nitrous.io virtual servers.
+  BetterErrors::Middleware.allow_ip!"0.0.0.0/0"
+
 end
