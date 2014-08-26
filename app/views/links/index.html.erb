@@ -1,0 +1,29 @@
+<h1>Listing Links</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>URL</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @links.each do |link| %>
+      <tr>
+        <td><%= link_to link.title, link_path(link) %></td>
+        <td><%= link_to link.url, link.url %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<% if user_signed_in? %>
+  Create <%= link_to 'New Link', new_link_path %>
+<% else %>
+Please <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> or 
+ <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %> to add Links.
+<% end %>
+</p>

@@ -1,6 +1,15 @@
 # == Route Map
 #
 #                   Prefix Verb   URI Pattern                    Controller#Action
+#                    links GET    /links(.:format)               links#index
+#                          POST   /links(.:format)               links#create
+#                 new_link GET    /links/new(.:format)           links#new
+#                edit_link GET    /links/:id/edit(.:format)      links#edit
+#                     link GET    /links/:id(.:format)           links#show
+#                          PATCH  /links/:id(.:format)           links#update
+#                          PUT    /links/:id(.:format)           links#update
+#                          DELETE /links/:id(.:format)           links#destroy
+#                     root GET    /                              links#index
 #         new_user_session GET    /users/sign_in(.:format)       devise/sessions#new
 #             user_session POST   /users/sign_in(.:format)       devise/sessions#create
 #     destroy_user_session DELETE /users/sign_out(.:format)      devise/sessions#destroy
@@ -16,17 +25,25 @@
 #                          PATCH  /users(.:format)               devise/registrations#update
 #                          PUT    /users(.:format)               devise/registrations#update
 #                          DELETE /users(.:format)               devise/registrations#destroy
-#                     root GET    /                              welcome#index
 #
 
 Rails.application.routes.draw do
+
+#  resources :users
+  
+#  resources :links do 
+#    resources :comments, only: [:create, :destroy]
+#  end
+  resources :links
+  
+  root 'links#index'
+  
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
