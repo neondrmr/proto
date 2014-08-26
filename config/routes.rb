@@ -29,12 +29,18 @@
 
 Rails.application.routes.draw do
 
+  get 'comments/create'
+
+  get 'comments/destroy'
+
 #  resources :users
   
 #  resources :links do 
 #    resources :comments, only: [:create, :destroy]
 #  end
-  resources :links
+  resources :links do 
+    resources :comments, only: [:create, :destroy]
+  end
   
   root 'links#index'
   

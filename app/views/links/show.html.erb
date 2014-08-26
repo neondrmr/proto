@@ -9,6 +9,29 @@
   <%= @link.url %>
 </p>
 
+<p>
+<ul>
+  <% @link.comments.each do |comment| %>
+    <li>
+      <%= comment.body %>
+      <%= comment.user.email unless comment.user.blank? %>
+      <%= link_to 'Delete', [@discussion, comment], method: :delete %>
+  </li>
+  <% end %>
+</ul>
+
+<% if user_signed_in? %>
+  <%= form_for [@link, Comment.new] do |f| %>
+    <%= f.label :comment %>
+    <%= f.text_area :body %>
+    <%= f.submit "Comment" %>
+  <% end %>
+<% else %>
+  <%= link_to 'Sign in to Comment', new_session_path %>
+<% end %>
+
+</p>
+
 <%= link_to 'Back', links_path %>
 
 
