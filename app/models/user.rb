@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
   
   has_many :links
   has_many :comments
+  has_many :votes
   
   
   def self.find_for_database_authentication(warden_conditions)

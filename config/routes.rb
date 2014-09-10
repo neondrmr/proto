@@ -29,6 +29,8 @@
 
 Rails.application.routes.draw do
 
+  get 'votes/create'
+
   get 'comments/create'
 
   get 'comments/destroy'

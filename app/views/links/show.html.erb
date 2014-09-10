@@ -16,7 +16,9 @@
         <%= comment.body %><br />
         <%= comment.user.email unless comment.user.blank? %>
         <% if user_signed_in? %>
-          <%= link_to 'Delete', [@link, comment], method: :delete %>
+          <% if is_comment_owner? comment %>
+            <%= link_to 'Delete', [@link, comment], method: :delete %>
+          <% end %>
         <% end %>
       </li>
     <% end %>

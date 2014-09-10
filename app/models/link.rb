@@ -14,6 +14,7 @@ class Link < ActiveRecord::Base
   require 'uri'
   belongs_to :user
   has_many :comments
+  has_many :votes
   before_save :validate_protocol  
 
 
